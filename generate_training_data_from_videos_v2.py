@@ -16,6 +16,7 @@ IOU_THRESHOLD = 0.3
 CONFIDENCE_THRESHOLD = 0.5
 CLASS_NAMES = ["person", "cyclist"]
 CLASS_COLORS = [(255, 0, 0), (0, 255, 0)]  # BGR: person-blue, cyclist-green
+FILE_PREFIX = "RV"
 
 os.makedirs(OUTPUT_IMAGE_DIR, exist_ok=True)
 os.makedirs(OUTPUT_LABEL_DIR, exist_ok=True)
@@ -50,8 +51,8 @@ def get_cyclist_enclosing_box(person_box, bicycles, iou_threshold):
     return None
 
 def save_yolo_annotation(frame, annotations, index, img_dir, lbl_dir):
-    image_name = f"{index:05d}.jpg"
-    label_name = f"{index:05d}.txt"
+    image_name = f"{FILE_PREFIX}{index:05d}.jpg"
+    label_name = f"{FILE_PREFIX}{index:05d}.txt"
     image_path = os.path.join(img_dir, image_name)
     label_path = os.path.join(lbl_dir, label_name)
 
